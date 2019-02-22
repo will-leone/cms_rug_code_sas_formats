@@ -1,7 +1,6 @@
 """
 Create SAS Formats for Resource Utilization Group, Version IV (RUG-IV)
 
-Analyst: Will D. Leone
 Last Updated: February 21, 2019
 
 Purpose:
@@ -14,28 +13,15 @@ Purpose:
     you will also need to install the requests and saspy modules using the
     'conda install requests' and 'conda install saspy' commands in Anaconda
     Prompt.
-  - You will also need to configure saspy using the instructions given here:
-      https://confluence.evolenthealth.com/display/AnalyticsActuarial
-      /SASpy+configuration+tutorial
-
- Next Steps:
- The output SAS datasets and CSV file will be saved to the SOURCE file within
- the all-client format directory (/sasprod/dw/formats). Once QA is done, the
- old datasets will need to be saved to the OLD subdirectory and the new datasets
- will need to be pushed into the main directory.
+  - You will also need to configure saspy
 
 """
 
 import requests
 import json
 import csv
-import os.path
-import re
 import saspy
 import pandas as pd
-import sys
-from copy import deepcopy
-from operator import itemgetter
 
 # Obtain the Socrata API site using the API button the dataset's landing page
 site = ('https://data.cms.gov/resource/qmvt-uw4p.json?'
